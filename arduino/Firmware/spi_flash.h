@@ -12,12 +12,7 @@
 
 /* for 32KB of sector size ----
  *  FIRMWARE SIZE 32767 (2048 hex lines * 32 bytes) 
- *  SECTOR FLAG SIZE 4095 bytes
- *  SECTOR 1 START ADDRESS 8192
- *  SECTOR 2 START ADDRESS 40960 
- *  FINAL ADDRESS of the sectors is at 73 KB ( 0x11FFF + 0x01) 
  *  if is needed to increase the size of the sectors the only value that have to be modified is the FIRMWARE SIZE all the rest is handled by the macros
- *  !! DO NOT WRITE BELOW THIS ADDRESS !!
  */
  
 #define INIT_FLASH_ADDRESS              0x7fffff
@@ -28,8 +23,6 @@
 #define SECTOR_LENGTH(l)                l + CRC_CHECK_SIZE
 #define SECTOR_CRC(c)                   c
 #define SECTOR_OFFSET                   ((uint32_t) (CRC_CHECK_SIZE + FILE_LENGTH))
-#define SECTOR_SBOX_VALUE               0x01 + SECTOR_FLAGS_END_ADDRESS
-#define SECTOR_RSBOX_VALUE              SECTOR_SBOX_VALUE + 0x100  
 
 #define UPDATE                          0x44 // 'D'
 
