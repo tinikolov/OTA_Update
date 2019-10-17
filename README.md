@@ -19,4 +19,11 @@ The bootloader  is using the original Caterina make file with removed LUFA drive
     The bootloader will flush the chip if a firmware is stored on the SPI Flash and flag UPDATE is set. Otherwise it jumps to the application sector.
     NOTE: If nothing is stored on the application sector the process will enter endless loop.
 
-
+# Upload process
+    1. Include the arduino/Firmware library to your project and add SetupFirmwareUpdate() in the setup(), and include the FirmwareUpdate() function to the loop()
+    2. To genrated encrypted version of the firmware,copy firmware.hex into generate_firmware and then compile and run the application The outcome of the program is encrypted firmware version stored in firm_encrypted.hex.
+    3. Compile the application from control_box on a device which have a RS232 connection to the Arduino board
+    4. Transfer the file and start the application from control_box folder
+    5. Burn the custom bootloader to the device
+    6. Restart
+    
