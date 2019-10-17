@@ -5,12 +5,12 @@ The libraries provide an option for updating the firmware over-the-air using fou
 - arduino/Firmware - library to handle the received messages from the control box and stores the record data on SPI flash. Performs a checksum check at the end of each transfer to verify the integrity of the received data
 - bootloader - a custom version that reads data from SPI flash and decrypts it on the fly before flushing the internal memory.
 
-The library is tested and fully functional on Arduino Leonardo board and should be compatible with other baords with a small modification on the pins for SPI flash chip.
+The library is tested and fully functional on Arduino Leonardo board. The SPI flash library is tested and working on Atmega2560.
 
 The encryption algorithm is  based on the [tinyAES](https://github.com/kokke/tiny-AES-c) implementaion.
-  
+
 # Bootloader
-The bootloader version is using the original Caterina make file with removed LUFA drivers and have a complete new custom logic. The added code will result in a compiledsize of just under 2KB (Originally Caterina takes 4KB). 
+The bootloader  is using the original Caterina make file with removed LUFA drivers and have a complete new custom logic. The added code will result in a compiled size of just under 2KB (Originally Caterina takes 4KB). 
 
 ## To burn on Arduino board
 
