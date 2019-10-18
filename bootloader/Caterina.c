@@ -91,8 +91,9 @@ void SPI_FlashImage(void){
         if(read_data == 0xFF){
         	break;
         }
-        Flash_readByteArray(buffer,strAddr + 0x01,read_data + 0x01);
-		    AES_CBC_decrypt_buffer(&ctx,(uint8_t *) &buffer[1], read_data - 0x01);
+        Flash_readByteArray(buffer,strAddr + 0x01,read_data + 0x01); // read one record
+		AES_CBC_decrypt_buffer(&ctx,(uint8_t *) &buffer[1], read_data - 0x01); // decrypt the data excluding the crc
+       // TODO: include a recoevery option if crc failed
         if(!line_checksum()){
           	break;
         }    
@@ -100,6 +101,7 @@ void SPI_FlashImage(void){
     }
 }
 
+// erase the application sector
 void EraseBootPage(void){
 	
 	for (uint32_t CurrFlashAddress = 0; CurrFlashAddress < BOOT_START_ADDR; CurrFlashAddress += SPM_PAGESIZE){
@@ -116,6 +118,9 @@ void crc8(uint8_t *crc, char data)
   (*crc) ^= ((uint8_t) data);
 }
 
+
+// compare the crc of the record and store them in the page buffer, once the data in the
+// buffer reaches SPM_PAGESIZE the data is flushed to the chip
 bool line_checksum(void){
 
     uint8_t calculated_crc_line = 0;
