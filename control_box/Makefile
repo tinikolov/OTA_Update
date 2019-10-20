@@ -1,7 +1,7 @@
 
 CC=gcc
 CFLAGS = -g -Wall -lm
-EXEC = ./comm
+EXEC = ./transfer
 
 #source common to all targets
 C_SOURCE_FILES +=  main.c \

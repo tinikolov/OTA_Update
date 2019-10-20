@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS = -g -Wall -lm
-EXEC = ./comm
+EXEC = ./gen_firmware
 
 #source common to all targets
 C_SOURCE_FILES += aes.c \

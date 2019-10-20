@@ -52,7 +52,7 @@ int main(void)
 		 	
 	LED_SETUP();
     TX_LED_OFF();
-  RX_LED_OFF();
+  	RX_LED_OFF();
 	Init();
 
   uint8_t _update = FLASH_readByte(0x00);
