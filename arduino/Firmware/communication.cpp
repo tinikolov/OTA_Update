@@ -114,10 +114,10 @@ void comm_calculate_crc(uint8_t *crc, char *c){
 void comm_check_crc(char *c){
 
     if((uint8_t) *c != crc){
-       Serial.write(ACK);
+       Serial.write(NAK);
        delay(DELAY_MSG);
     }else{
-      Serial.write(NAK);
+      Serial.write(ACK);
       delay(DELAY_MSG);
         FLASH_WriteFirmware();
     }
