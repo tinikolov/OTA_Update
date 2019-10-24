@@ -117,7 +117,7 @@ void comm_check_crc(char *c){
        Serial.write(ACK);
        delay(DELAY_MSG);
     }else{
-      Serial.write(ACK);
+      Serial.write(NAK);
       delay(DELAY_MSG);
         FLASH_WriteFirmware();
     }
